@@ -15,7 +15,6 @@ export function SearchBookList({ searchTerm, setSearchTerm }) {
         }
       } catch (error) {
         console.error('Error fetching books:', error);
-        // Handle errors gracefully, e.g., display an error message to the user
       }
     };
 

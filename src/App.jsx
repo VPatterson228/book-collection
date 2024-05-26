@@ -8,8 +8,8 @@ import './App.css';
 import ResponsiveAppBar from './ResponsiveAppBar';
 
 export default function App() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [savedBooks, setSavedBooks] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(''); //Stores the current search term for books
+  const [savedBooks, setSavedBooks] = useState([]); //Stores an array of saved books retieved from local storage
   const [bookList, setBookList] = useState(() => {
     // Initialize local list from localStorage or empty array if not found
     const storedBookList = JSON.parse(localStorage.getItem('bookList')) || [];
@@ -25,6 +25,7 @@ export default function App() {
     setBookList(storedBookList);
   }, []);
 
+    //function for saved books with new book
   const updateSavedBooks = (newBook) => {
     setSavedBooks([...savedBooks, newBook]);
   };

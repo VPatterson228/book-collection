@@ -7,7 +7,7 @@ export default function Book({ book }) {
     return null; // Return null if book is undefined
   }
 
-  // Destructure book object to access its properties safely
+  // Destructed book object to access its properties 
   const { volumeInfo } = book || {};
 
   // Check if volumeInfo is defined

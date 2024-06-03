@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Book from './Book';
 
-export function SearchBookList({ searchTerm, setSearchTerm }) {
+export function SearchBookList({ searchTerm, setSearchTerm, setBookList }) {
   const [books, setBooks] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   
@@ -25,7 +25,7 @@ export function SearchBookList({ searchTerm, setSearchTerm }) {
     setSearchTerm(searchInput);
   };
 
-  const addToBookList = (book, setBookList) => {
+  const addToBookList = (book) => {
     console.log('Adding book to local list:', book);
     // Retrieve the existing local list from localStorage
     const existingBookList = JSON.parse(localStorage.getItem('bookList')) || [];
@@ -51,7 +51,7 @@ export function SearchBookList({ searchTerm, setSearchTerm }) {
       {books && books.map((book, index) => (
         <div key={`${book.id}-${index}`}>
           <Book book={book} />
-          <button onClick={() => addToBookList(book)}>Add to Book List</button>
+          <button onClick={() => addToBookList(book)}>Add TBR List</button>
 
         </div>
       ))}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Book from './Book';
 
-export function BookList({ bookList }) { // Pass onDeleteBook function
+export function BookList({ bookList }) { 
 
   const [currentBooks, setCurrentBooks] = useState(bookList); // Maintain state for books
   const navigate = useNavigate();
@@ -16,9 +16,9 @@ export function BookList({ bookList }) { // Pass onDeleteBook function
     const updatedBookList = existingBookList.filter(item => item.id !== book.id);
     localStorage.setItem('bookList', JSON.stringify(updatedBookList));
   };
-  const handleAddToTBR = (book) => {
+  const handleAddReview = (book) => {
     const { title, authors } = book.volumeInfo || {}; // Extract title and authors
-    navigate(`/book-review/new`, { state: { title, authors } }); // Pass title and authors as state
+    navigate(`/book-review`, { state: { title, authors } }); // Pass title and authors as state
   };
   return (
     <div>
@@ -27,7 +27,7 @@ export function BookList({ bookList }) { // Pass onDeleteBook function
         currentBooks.map((book, index) => (
           <div key={index}>
             <Book book={book} />
-            <button onClick={() => handleAddToTBR(book)}>Write Review</button>
+            <button onClick={() => handleAddReview(book)}>Write Review</button>
             <button onClick={() => handleDeleteBook(book)}>Delete</button>
           </div>
         ))

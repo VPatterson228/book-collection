@@ -30,7 +30,6 @@ export default function App() {
             element={<SearchBookList searchTerm={searchTerm} setSearchTerm={setSearchTerm} setBookList={setBookList} />}
           />
           <Route path="/book-review" element={<BookReview />} />
-          <Route exact path="/book-review/new" element={<BookReview />} />
           <Route path="/tbr-list" element={<BookList bookList={bookList} />} />
         </Routes>
       </Container>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-export function BookReview( ) {
+export function BookReview() {
     const location = useLocation();
     const { title, authors, book = {} } = location.state || {}; // Safely access book from state
 
@@ -33,11 +33,11 @@ export function BookReview( ) {
     const handleSaveEditedReview = (e) => {
         e.preventDefault();
         const reviewText = e.target.elements["textarea"].value;
-
+        const combinedData = { title, authors, review: reviewText } 
         const reviewIndex = reviews.findIndex((review) => review === submittedReview);
 
         if (reviewIndex !== -1) {
-            const updatedReview = { ...submittedReview, review: reviewText };
+            const updatedReview = { ...submittedReview, combinedData };
             const updatedReviews = [...reviews];
             updatedReviews[reviewIndex] = updatedReview;
             setReviews(updatedReviews);
@@ -64,16 +64,21 @@ export function BookReview( ) {
     }
 
     return (
-        <div style={{ textAlign: 'center'}}>
-            <h1 style={{fontFamily: 'merienda', fontSize: '50px'}}>Write Review for: </h1>
-            <h2 style={{margin: '0px'}} >Title: {title}</h2>
-            <h2 style={{marginTop: '0px'}} >Author(s): {authors && authors.join(', ')}</h2>
+        <div style={{ textAlign: 'center' }}>
+            <h1 style={{ fontFamily: 'merienda', fontSize: '50px' }}>Write Review for: </h1>
+            <h2 style={{ margin: '0px' }} >Title: {title}</h2>
+            <h2 style={{ marginTop: '0px' }} >Author(s): {authors && authors.join(', ')}</h2>
+            
+            {submittedReview && (                
+                <h2>Editing review for: {submittedReview.title}</h2>
+            )}
+            
             <form onSubmit={submittedReview ? handleSaveEditedReview : handleSubmitReview}>
                 <textarea
                     name="textarea"
                     placeholder="Write your review here..."
                     defaultValue={submittedReview ? submittedReview.review : ''}
-                    style={{ width: '500px', height: '100px', padding: '10px'}} 
+                    style={{ width: '500px', height: '100px', padding: '10px' }}
                 />
                 <br />
                 <button type="submit">
@@ -81,18 +86,16 @@ export function BookReview( ) {
                 </button>
             </form>
 
-            {submittedReview && (
-                <p>Editing review for: {submittedReview.title}</p>
-            )}
+
 
             {reviews.length > 0 && (
                 <div>
-                    <h1 style={{fontFamily: 'merienda', fontSize: '50px'}}>Existing Reviews: </h1>
-                    <ul style={{listStyleType: 'none', padding: '0px'}}>
+                    <h1 style={{ fontFamily: 'merienda', fontSize: '50px' }}>Existing Reviews: </h1>
+                    <ul style={{ listStyleType: 'none', padding: '0px' }}>
                         {reviews.map((review, index) => (
                             <li key={index} >
-                                <h2 style={{marginBottom: '0px'}} >{review.title}</h2> {/* Display title from stored review */}
-                                <h2 style={{margin: '0px'}}>By: {review.authors && review.authors.join(', ')}</h2> {/* Display authors from stored review */}
+                                <h2 style={{ marginBottom: '0px' }} >{review.title}</h2> {/* Display title from stored review */}
+                                <h3 style={{ margin: '0px' }}>By: {review.authors && review.authors.join(', ')}</h3> {/* Display authors from stored review */}
                                 <p>{review.review}</p>
                                 <button onClick={() => handleEditReview(review)}>Edit</button>
                                 <button onClick={() => handleDeleteReview(review)}>Delete</button>

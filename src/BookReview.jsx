@@ -33,11 +33,11 @@ export function BookReview() {
     const handleSaveEditedReview = (e) => {
         e.preventDefault();
         const reviewText = e.target.elements["textarea"].value;
-        const combinedData = { title, authors, review: reviewText } 
+
         const reviewIndex = reviews.findIndex((review) => review === submittedReview);
 
         if (reviewIndex !== -1) {
-            const updatedReview = { ...submittedReview, combinedData };
+            const updatedReview = { ...submittedReview, review: reviewText };
             const updatedReviews = [...reviews];
             updatedReviews[reviewIndex] = updatedReview;
             setReviews(updatedReviews);
@@ -69,7 +69,7 @@ export function BookReview() {
             <h2 style={{ margin: '0px' }} >Title: {title}</h2>
             <h2 style={{ marginTop: '0px' }} >Author(s): {authors && authors.join(', ')}</h2>
             
-            {submittedReview && (                
+            {submittedReview && (
                 <h2>Editing review for: {submittedReview.title}</h2>
             )}
             

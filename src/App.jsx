@@ -6,8 +6,10 @@ import { BookList } from './BookList';
 import { BookReview } from './BookReview';
 import './App.css';
 import ResponsiveAppBar from './ResponsiveAppBar';
+import { HomePage } from './HomePage';
 
 export default function App() {
+
   const [searchTerm, setSearchTerm] = useState(''); //Stores the current search term for books
   const [bookList, setBookList] = useState(() => {
     // Initialize local list from localStorage or empty array if not found
@@ -21,18 +23,21 @@ export default function App() {
   }, []);
 
   return (
-    <Router>
-      <ResponsiveAppBar />
-      <Container maxWidth="lg">
-        <Routes>
-          <Route
-            path="/search-books"
-            element={<SearchBookList searchTerm={searchTerm} setSearchTerm={setSearchTerm} setBookList={setBookList} />}
-          />
-          <Route path="/book-review" element={<BookReview />} />
-          <Route path="/tbr-list" element={<BookList bookList={bookList} />} />
-        </Routes>
-      </Container>
-    </Router>
+    <div>
+      <Router>
+        <ResponsiveAppBar />
+        <Container maxWidth="lg">
+          <Routes>
+            <Route path="/home" element={<HomePage />} />
+            <Route
+              path="/search-books"
+              element={<SearchBookList searchTerm={searchTerm} setSearchTerm={setSearchTerm} setBookList={setBookList} />}
+            />
+            <Route path="/book-review" element={<BookReview />} />
+            <Route path="/tbr-list" element={<BookList bookList={bookList} />} />
+          </Routes>
+        </Container>
+      </Router>
+    </div>
   );
 }

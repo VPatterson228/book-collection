@@ -19,6 +19,7 @@ export function BookList({ bookList }) {
   const handleAddReview = (book) => {
     const { title, authors } = book.volumeInfo || {};
     navigate('/book-review', { state: {  title, authors } }); // Pass entire book object
+    handleDeleteBook(book);
   };
 
   return (

@@ -25,3 +25,9 @@ body::before {
   position: relative; /* Ensures content appears above the pseudo-element */
   z-index: 1; /* Ensures content appears above the pseudo-element */
 }
+.merienda {
+  font-family: "Merienda", cursive;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}

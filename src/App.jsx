@@ -28,6 +28,7 @@ export default function App() {
         <ResponsiveAppBar />
         <Container maxWidth="lg">
           <Routes>
+            <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<HomePage />} />
             <Route
               path="/search-books"

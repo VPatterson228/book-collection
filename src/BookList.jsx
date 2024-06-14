@@ -24,7 +24,7 @@ export function BookList({ bookList }) {
 
   return (
     <div>
-      <h1>Book List</h1>
+      <h1 style={{ fontFamily: 'merienda' ,textAlign: 'center', fontSize: '50px'}}>To Be Read List</h1>
       {currentBooks.length > 0 ? (
         currentBooks.map((book, index) => (
           <div key={`${book.id}-${index}`}>

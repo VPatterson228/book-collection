@@ -11,7 +11,7 @@ export function HomePage() {
 const styles = {
     
     heading: {
-      fontFamily: 'Merienda, cursive', // Ensure to include a fallback font and correct family format
+      fontFamily: 'Merienda, cursive', 
       fontSize: '100px',
       textAlign: 'center',
     },

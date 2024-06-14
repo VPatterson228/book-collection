@@ -40,7 +40,7 @@ export function SearchBookList({ searchTerm, setSearchTerm, setBookList }) {
 
   return (
     <div >
-      <h1>Search Books</h1>
+      <h1 style={{fontFamily: 'merienda', fontSize: '50px'}}>Search for Books</h1>
       <input
         type="text"
         placeholder="Search for a book"

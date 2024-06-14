@@ -45,7 +45,7 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            BOOKS LOG
+            BOOK LOG
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

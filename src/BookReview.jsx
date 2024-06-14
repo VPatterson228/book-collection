@@ -65,15 +65,15 @@ export function BookReview( ) {
 
     return (
         <div style={{ textAlign: 'center'}}>
-            <h1>Write Review for: </h1>
-            <h2 style={{margin: '0px'}} >{title}</h2>
+            <h1 style={{fontFamily: 'merienda', fontSize: '50px'}}>Write Review for: </h1>
+            <h2 style={{margin: '0px'}} >Title: {title}</h2>
             <h2 style={{marginTop: '0px'}} >Author(s): {authors && authors.join(', ')}</h2>
             <form onSubmit={submittedReview ? handleSaveEditedReview : handleSubmitReview}>
                 <textarea
                     name="textarea"
                     placeholder="Write your review here..."
                     defaultValue={submittedReview ? submittedReview.review : ''}
-                    style={{ width: '500px', height: '100px', padding: '10px'}} // Set default value for editing
+                    style={{ width: '500px', height: '100px', padding: '10px'}} 
                 />
                 <br />
                 <button type="submit">
@@ -87,7 +87,7 @@ export function BookReview( ) {
 
             {reviews.length > 0 && (
                 <div>
-                    <h1>Existing Reviews: </h1>
+                    <h1 style={{fontFamily: 'merienda', fontSize: '50px'}}>Existing Reviews: </h1>
                     <ul style={{listStyleType: 'none', padding: '0px'}}>
                         {reviews.map((review, index) => (
                             <li key={index} >
@@ -104,3 +104,4 @@ export function BookReview( ) {
         </div>
     );
 }
+
